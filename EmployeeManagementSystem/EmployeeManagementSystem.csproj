@@ -92,6 +92,7 @@
     <Content Include="js\fontawesome-all.min.js" />
     <Content Include="Pages\Dashboard.aspx" />
     <Content Include="Pages\Employee\AddEmp.aspx" />
+    <Content Include="Pages\Employee\ShowEmp.aspx" />
     <Content Include="Pages\Employee\UpdateEmp.aspx" />
     <Content Include="Pages\Employee\WebForm1.aspx" />
     <Content Include="Pages\Homepage.aspx" />
@@ -113,6 +114,13 @@
     </Compile>
     <Compile Include="Pages\Employee\AddEmp.aspx.designer.cs">
       <DependentUpon>AddEmp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Employee\ShowEmp.aspx.cs">
+      <DependentUpon>ShowEmp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Employee\ShowEmp.aspx.designer.cs">
+      <DependentUpon>ShowEmp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Employee\UpdateEmp.aspx.cs">
       <DependentUpon>UpdateEmp.aspx</DependentUpon>

@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ShowEmp.aspx.cs" Inherits="EmployeeManagementSystem.Pages.Employee.ShowEmp" %>
 
 <%@ Import Namespace="EmployeeManagementSystem.Service" %>
-<%@ Import Namespace="EmployeeManagementSystem.Service.Utilities" %>
+<%@ Import Namespace="EmployeeManagementSystem.Service.Services" %>
 
 
 <!DOCTYPE html>
@@ -17,54 +17,45 @@
     <title>Show All Employee</title>
 </head>
 <body>
-   <h1>View All Users</h1>
-    <a href="Create.aspx">Add New User</a>
-    <br />
-    <br />
+    <h1>View All Employees</h1>
 
+    <br />
     <form id="form1" runat="server">
-         <%--<h1>User List for department Id <%= Request.QueryString["Id"] %></h1>--%>
-
-        <div>
-            <table class="data-view">
+        <div class="container">
+            <table>
                 <tr>
-                    <th>Id</th>
-                    <th>FirstName</th>
-                    <th>LastName</th>
-                     <th>DateOfBirth</th>
-                    <th>Pan</th>
-                    <th>Address</th>
-                     <th>Gender</th>
-                    <th>MobileNumber</th>
+                    <th>Employee Id</th>
+                    <th>Employee Unique Number</th>
+                    <th>Employee Name</th>
                     <th>Email</th>
-                     <th>Comments</th>
-                    <th>DepartmentRefId</th>
-                   
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Address</th>
+                    <th>Position</th>
+                    <th>Date Of Joining</th>
+                    <th>DepartmentId</th>
                     <th colspan="2"></th>
                 </tr>
-                 <%
-                    var userService = new UserService();
-                    var users = userService.GetAll();
+                <%
+                    var employeeService = new EmployeeServices();
+                    var employees = employeeService.GetAll();
 
-                    foreach (var user in users)
+                    foreach (var employee in employees)
                     {
                         Response.Write("<tr>\n");
-                        Response.Write($"<td>{user.Id}</td>\n");
-                        Response.Write($"<td>{user.FirstName}</td>\n");
-                        Response.Write($"<td>{user.LastName}</td>\n");
+                        Response.Write($"<td>{employee.EmployeeId}</td>\n");
+                        Response.Write($"<td>{employee.EmployeeUniqueNumber}</td>\n");
+                        Response.Write($"<td>{employee.EmployeeName}</td>\n");
+                        Response.Write($"<td>{employee.Email}</td>\n");
+                        Response.Write($"<td>{employee.Gender}</td>\n");
+                        Response.Write($"<td>{employee.Age}</td>\n");
+                        Response.Write($"<td>{employee.Address}</td>\n");
+                        Response.Write($"<td>{employee.Position}</td>\n");
+                        Response.Write($"<td>{employee.DateOfJoining}</td>\n");
+                        Response.Write($"<td>{employee.DepartmentId}</td>\n");
 
-                         Response.Write($"<td>{user.DateOfBirth}</td>\n");
-                        Response.Write($"<td>{user.Pan}</td>\n");
-                        Response.Write($"<td>{user.Address}</td>\n");
-                         Response.Write($"<td>{user.Gender}</td>\n");
-                        Response.Write($"<td>{user.MobileNumber}</td>\n");
-                        Response.Write($"<td>{user.Email}</td>\n");
-                         Response.Write($"<td>{user.Comments}</td>\n");
-                        Response.Write($"<td>{user.DepartmentRefId}</td>\n");
-                       
-
-                        Response.Write($"<td><a href=\"Update.aspx?id={user.Id}\">Edit</a></td>\n");
-                        Response.Write($"<td><a href=\"Delete.aspx?id={user.Id}\">Delete</a></td>\n");
+                        Response.Write($"<td><a href=\"UpdateEmp.aspx?id={employee.EmployeeId}\">Edit</a></td>\n");
+                        Response.Write($"<td><a href=\"DeleteEmp.aspx?id={employee.EmployeeId}\">Delete</a></td>\n");
                         Response.Write("</tr>\n");
                     }
                 %>
